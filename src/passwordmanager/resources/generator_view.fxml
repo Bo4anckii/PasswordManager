@@ -32,9 +32,21 @@
          <Font name="System Bold" size="12.0"/>
       </font>
    </Button>
-   <Spinner fx:id="lengthFromSpinner" initialValue="12" layoutX="108.0" layoutY="11.0" prefWidth="80.0"/>
-   <Spinner fx:id="lengthToSpinner" initialValue="12" layoutX="108.0" layoutY="36.0" prefWidth="80.0"/>
-   <Spinner fx:id="amount" initialValue="12" layoutX="108.0" layoutY="61.0" prefWidth="80.0"/>
+   <Spinner fx:id="lengthFromSpinner" layoutX="108.0" layoutY="11.0" prefWidth="80.0" amountToStepBy="1">
+      <valueFactory>
+         <SpinnerValueFactory.IntegerSpinnerValueFactory min="4" max="50"/>
+      </valueFactory>
+   </Spinner>
+   <Spinner fx:id="lengthToSpinner" layoutX="108.0" layoutY="36.0" prefWidth="80.0" amountToStepBy="1">
+      <valueFactory>
+         <SpinnerValueFactory.IntegerSpinnerValueFactory min="4" max="50"/>
+      </valueFactory>
+   </Spinner>
+   <Spinner fx:id="amount" layoutX="108.0" layoutY="61.0" prefWidth="80.0" amountToStepBy="1">
+      <valueFactory>
+         <SpinnerValueFactory.IntegerSpinnerValueFactory min="4" max="50"/>
+      </valueFactory>
+   </Spinner>
    <CheckBox fx:id="firstLetterCB" layoutX="172.0" layoutY="90.0" mnemonicParsing="false"/>
    <CheckBox fx:id="lowerEngCB" layoutX="172.0" layoutY="115.0" mnemonicParsing="false"/>
    <CheckBox fx:id="upperEngCB" layoutX="172.0" layoutY="140.0" mnemonicParsing="false"/>
