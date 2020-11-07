@@ -1,5 +1,6 @@
 package passwordmanager.ui.generator;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -28,6 +29,21 @@ public class GeneratorController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        lengthFromSpinner.setOnInputMethodTextChanged(event -> model.setMin(lengthFromSpinner.getValue()));
+        lengthToSpinner.setOnInputMethodTextChanged(event -> model.setMax(lengthToSpinner.getValue()));
+        amount.setOnInputMethodTextChanged(event -> model.setAmount(amount.getValue()));
+        firstLetterCB.setOnAction(event -> model.setLetterFirst(firstLetterCB.isSelected()));
+        lowerEngCB.setOnAction(event -> model.setLowerEng(lowerEngCB.isSelected()));
+        upperEngCB.setOnAction(event -> model.setUpperEng(upperEngCB.isSelected()));
+        digitsCB.setOnAction(event -> model.setDigits(digitsCB.isSelected()));
+        symbolsCB.setOnAction(event -> model.setSymbols(symbolsCB.isSelected()));
+        lowerRusCB.setOnAction(event -> model.setLowerRus(lowerRusCB.isSelected()));
+        upperRusCB.setOnAction(event -> model.setUpperRus(upperRusCB.isSelected()));
+        similarCB.setOnAction(event -> model.setRemoveSimilar(similarCB.isSelected()));
+        generateBtn.setOnAction(event -> generatePassword());
+    }
+
+    private void generatePassword(){
 
     }
 }

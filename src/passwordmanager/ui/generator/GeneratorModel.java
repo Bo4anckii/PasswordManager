@@ -3,6 +3,7 @@ package passwordmanager.ui.generator;
 public class GeneratorModel {
     private int min;
     private int max;
+    private int amount;
     private boolean letterFirst;
     private boolean lowerEng;
     private boolean upperEng;
@@ -90,5 +91,13 @@ public class GeneratorModel {
 
     public void setRemoveSimilar(boolean removeSimilar) {
         this.removeSimilar = removeSimilar;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }
