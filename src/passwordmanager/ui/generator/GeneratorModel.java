@@ -11,7 +11,6 @@ public class GeneratorModel {
     private boolean symbols;
     private boolean lowerRus;
     private boolean upperRus;
-    private boolean removeSimilar;
 
     public int getMin() {
         return min;
@@ -83,14 +82,6 @@ public class GeneratorModel {
 
     public void setUpperRus(boolean upperRus) {
         this.upperRus = upperRus;
-    }
-
-    public boolean isRemoveSimilar() {
-        return removeSimilar;
-    }
-
-    public void setRemoveSimilar(boolean removeSimilar) {
-        this.removeSimilar = removeSimilar;
     }
 
     public int getAmount() {
