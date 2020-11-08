@@ -13,10 +13,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
+
 import passwordmanager.db.AccountDao;
 import passwordmanager.db.AccountDaoImpl;
 import passwordmanager.models.Account;
@@ -30,10 +32,10 @@ public class MainController implements Initializable {
     public TableColumn<Account, String> accountPassword;
     public TableColumn<Account, String> accountEmail;
     public TableColumn<Account, String> accountURL;
-    private final AccountDao accountDao = new AccountDaoImpl();
-    private final MainModel model = new MainModel();
     public Button refreshButton;
     public Button deleteButton;
+    private final AccountDao accountDao = new AccountDaoImpl();
+    private final MainModel model = new MainModel();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,38 +58,38 @@ public class MainController implements Initializable {
         updateData();
     }
 
-    private void showAddView(){
+    private void showAddView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../resources/add_view.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Добавление аккаунта");
-            stage.setScene(new Scene(root,275,190));
+            stage.setScene(new Scene(root, 340, 190));
             stage.setResizable(false);
             stage.show();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void updateData(){
+    private void updateData() {
         System.out.println("Update Data");
         model.accounts = accountDao.getAccounts();
         table.getItems().setAll(model.accounts);
     }
 
-    private void filterData(){
+    private void filterData() {
         ObservableList<Account> filteredList = FXCollections.observableArrayList();
-        for (Account acc: model.accounts) {
-            if(acc.getName().contains(searchTF.getText())){
+        for (Account acc : model.accounts) {
+            if (acc.getName().contains(searchTF.getText())) {
                 filteredList.add(acc);
             }
         }
         table.setItems(filteredList);
     }
 
-    private void deleteAccount(){
+    private void deleteAccount() {
         accountDao.deleteAccount(table.getSelectionModel().getSelectedItem());
         updateData();
     }
