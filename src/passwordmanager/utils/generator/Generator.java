@@ -31,47 +31,47 @@ public class Generator {
         this.upperRus = upperRus;
     }
 
-    public ArrayList<String> generatePasswords(){
+    public ArrayList<String> generatePasswords() {
         ArrayList<String> passwords = new ArrayList<>();
-        for(int i=0;i<amount;i++){
-            String newPassword = initPassword((int)(min+Math.random()*max));
-            if(lowerEng){
+        for (int i = 0; i < amount; i++) {
+            String newPassword = initPassword((int) (min + Math.random() * (max - min + 1)));
+            if (lowerEng) {
                 newPassword = new LowerEngLetters(newPassword).getPassword();
             }
-            if(upperEng){
+            if (upperEng) {
                 newPassword = new UpperEngLetters(newPassword).getPassword();
             }
-            if(lowerRus){
+            if (lowerRus) {
                 newPassword = new LowerRusLetters(newPassword).getPassword();
             }
-            if(upperRus) {
+            if (upperRus) {
                 newPassword = new UpperRusLetters(newPassword).getPassword();
             }
-            if(digits){
+            if (digits) {
                 newPassword = new Digits(newPassword).getPassword();
             }
-            if(symbols){
+            if (symbols) {
                 newPassword = new Symbols(newPassword).getPassword();
             }
-            if(letterFirst){
-                newPassword = ((char)(97+(int)(Math.random()*25)))+newPassword.substring(1);
+            if (letterFirst) {
+                newPassword = ((char) (97 + (int) (Math.random() * 25))) + newPassword.substring(1);
             }
             passwords.add(newPassword);
         }
         return passwords;
     }
 
-    private String initPassword(int length){
+    private String initPassword(int length) {
         char[] pass = new char[length];
-        for(int i=0; i<length;i++){
-            if(lowerRus) {
-                pass[i]= Randomizer.randomLowerRus();
-            } else if(upperRus){
-                pass[i]= Randomizer.randomUpperRus();
-            } else if(upperEng){
-                pass[i]= Randomizer.randomUpperEng();
+        for (int i = 0; i < length; i++) {
+            if (lowerRus) {
+                pass[i] = Randomizer.randomLowerRus();
+            } else if (upperRus) {
+                pass[i] = Randomizer.randomUpperRus();
+            } else if (upperEng) {
+                pass[i] = Randomizer.randomUpperEng();
             } else {
-                pass[i]= Randomizer.randomLowerEng();
+                pass[i] = Randomizer.randomLowerEng();
             }
         }
         return String.copyValueOf(pass);

@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import passwordmanager.db.AccountDao;
 import passwordmanager.db.AccountDaoImpl;
 import passwordmanager.models.Account;
+import passwordmanager.ui.generator.GeneratorController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,6 +32,11 @@ public class AddController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         addButton.setOnAction(event -> createNewAccount());
         genButton.setOnAction(event -> openGenerator());
+    }
+
+    public void setPassword(String password) {
+        passwordTF.setText(password);
+        passwordTF.textProperty().set(password);
     }
 
     private void createNewAccount() {
@@ -54,9 +60,10 @@ public class AddController implements Initializable {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Генератор паролей");
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root, 600, 335));
             stage.setResizable(false);
             stage.show();
+            loader.<GeneratorController>getController().addController = this;
         } catch (IOException e) {
             e.printStackTrace();
         }
